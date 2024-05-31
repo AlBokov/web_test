@@ -1,12 +1,21 @@
 package ru.netology.web;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
+import org.junit.BeforeClass;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.cssClass;
 import static com.codeborne.selenide.Selenide.*;
 
 public class formTestV3 {
+
+
+    @BeforeClass
+    public static void setup() {
+        Configuration.headless = true;
+    }
+
     @Test
     void phoneFieldIsEmpty() {
         open("http://0.0.0.0:9999");

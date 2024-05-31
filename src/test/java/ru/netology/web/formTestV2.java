@@ -1,7 +1,9 @@
 package ru.netology.web;
 
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
+import org.junit.BeforeClass;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.cssClass;
@@ -9,6 +11,13 @@ import static com.codeborne.selenide.Selenide.*;
 
 
 public class formTestV2 {
+
+
+    @BeforeClass
+    public static void setup() {
+        Configuration.headless = true;
+    }
+
     // проверка отправки формы с пустым полем Фамилия и имя
     @Test
     void sendingFormWithoutFULLNameField() {
