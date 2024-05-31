@@ -16,7 +16,7 @@ public class formTestV1 {
     void workingWithValidData() {
         open("http://0.0.0.0:9999");
         SelenideElement form = $(".form_theme_alfa-on-white");
-        form.$("[name=name]").setValue("Боков Александр>");
+        form.$("[name=name]").setValue("Боков Александр");
         form.$("[name=phone]").setValue("+95000000000");
         form.$(".checkbox_theme_alfa-on-white").click();
         form.$("button").click();
