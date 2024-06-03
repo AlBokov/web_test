@@ -15,13 +15,9 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class formTestV1 {
 
-    @BeforeEach
-    public void beforeEach() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-dev-shm-usage"); // Аргумент для работы с памятью в CI
-        options.addArguments("--no-sandbox"); // Аргумент для работы с памятью в CI
-        options.addArguments("--headless"); // Этот аргумент отвечает за режим headless
-
+    @BeforeClass
+    public static void setup() {
+        Configuration.headless = true;
     }
 
     // проверка формы с валлидными данными
