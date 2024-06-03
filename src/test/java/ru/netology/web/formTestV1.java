@@ -5,7 +5,9 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
 import org.junit.BeforeClass;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -13,14 +15,18 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class formTestV1 {
 
-    @BeforeClass
-    public static void setup() {
-        Configuration.headless = true;
+    @BeforeEach
+    public void beforeEach() {
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-dev-shm-usage"); // Аргумент для работы с памятью в CI
+        options.addArguments("--no-sandbox"); // Аргумент для работы с памятью в CI
+        options.addArguments("--headless"); // Этот аргумент отвечает за режим headless
+
     }
 
     // проверка формы с валлидными данными
     @Test
-    void workingWithValidData() {
+    public void workingWithValidData() {
         open("http://0.0.0.0:9999");
         SelenideElement form = $(".form_theme_alfa-on-white");
         form.$("[name=name]").setValue("Боков Александр");
