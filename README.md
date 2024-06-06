@@ -1,1 +1,2 @@
 # Домашнее задание к занятию «2.1. Тестирование веб-интерфейсов»
+[![Java CI with Gradle](https://github.com/AlBokov/web_test/actions/workflows/gradle.yml/badge.svg)](https://github.com/AlBokov/web_test/actions/workflows/gradle.yml)
