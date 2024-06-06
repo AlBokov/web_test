@@ -1,5 +1,6 @@
 package ru.netology.web;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
 import org.junit.BeforeClass;
@@ -18,50 +19,47 @@ public class FormTestV3 {
 
     @Test
     void phoneFieldIsEmpty() {
-        open("http://0.0.0.0:9999");
+        open("http://localhost:9999");
 
         SelenideElement form = $("[action]");
         form.$("[name=name]").setValue("Боков Александр");
-        // form.$(".input__control[type=tel]").setValue("+95000000000");
         form.$(".checkbox__text").click();
         form.$(".button_theme_alfa-on-white").click();
-        element("[data-test-id=phone]").shouldHave(cssClass("input_invalid"));// Проверяем что .input_invalid есть в поле [data-test-id=name]
+        $("[data-test-id='phone'].input_invalid .input__sub").shouldHave(Condition.exactText("Поле обязательно для заполнения"));
     }
 
     @Test
     void phoneLettersField() {
-        open("http://0.0.0.0:9999");
+        open("http://localhost:9999");
 
         SelenideElement form = $("[action]");
         form.$("[name=name]").setValue("Боков Александр");
         form.$(".input__control[type=tel]").setValue("+цукенгшщзхъ");
         form.$(".checkbox__text").click();
         form.$(".button_theme_alfa-on-white").click();
-        element("[data-test-id=phone]").shouldHave(cssClass("input_invalid"));// Проверяем что .input_invalid есть в поле [data-test-id=name]
+        $("[data-test-id='phone'].input_invalid .input__sub").shouldHave(Condition.exactText("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678."));
     }
 
     @Test
     void phoneField10() {
-        open("http://0.0.0.0:9999");
+        open("http://localhost:9999");
 
         SelenideElement form = $("[action]");
         form.$("[name=name]").setValue("Боков Александр");
         form.$(".input__control[type=tel]").setValue("+9500000000");
         form.$(".checkbox__text").click();
         form.$(".button_theme_alfa-on-white").click();
-        element("[data-test-id=phone]").shouldHave(cssClass("input_invalid"));// Проверяем что .input_invalid есть в поле [data-test-id=name]
-    }
+        $("[data-test-id='phone'].input_invalid .input__sub").shouldHave(Condition.exactText("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678."));    }
 
     @Test
     void phoneField12() {
-        open("http://0.0.0.0:9999");
+        open("http://localhost:9999");
 
         SelenideElement form = $("[action]");
         form.$("[name=name]").setValue("Боков Александр");
         form.$(".input__control[type=tel]").setValue("+950000000000");
         form.$(".checkbox__text").click();
         form.$(".button_theme_alfa-on-white").click();
-        element("[data-test-id=phone]").shouldHave(cssClass("input_invalid"));// Проверяем что .input_invalid есть в поле [data-test-id=name]
-    }
+        $("[data-test-id='phone'].input_invalid .input__sub").shouldHave(Condition.exactText("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678."));    }
 
 }
