@@ -12,7 +12,7 @@ import static com.codeborne.selenide.Condition.cssClass;
 import static com.codeborne.selenide.Selenide.*;
 
 
-public class formTestV2 {
+public class FormTestV2 {
 
 
     @BeforeClass

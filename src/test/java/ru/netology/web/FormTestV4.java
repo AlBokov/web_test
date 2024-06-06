@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Condition.cssClass;
 import static com.codeborne.selenide.Selenide.*;
 
-public class formTestV4 {
+public class FormTestV4 {
 
     @BeforeClass
     public static void setup() {
